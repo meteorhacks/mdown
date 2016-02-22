@@ -39,10 +39,16 @@ With the MeteorDown script, you can call methods and invoke subscriptions. The f
 
 This ddp client is based on [node-ddp-client](https://github.com/oortcloud/node-ddp-client) but with some changes to make it more Meteor like. Let's look at APIs:
 
-###Meteor.call
+###Meteor.call and Meteor.apply
 
 ~~~js
 Meteor.call('name'[, args*], callback)
+~~~
+
+and
+
+~~~js
+Meteor.call('name'[, args], callback)
 ~~~
 
 Call a Meteor method. Just like the browser client, the callback will receive 2 arguments Error and the Result.
@@ -54,6 +60,15 @@ Meteor.subscribe('name'[, args*], callback)
 ~~~
 
 The callback function will be called when the subscription is ready and all initial data is loaded to the client.
+
+###Handling More Complex Pipelines with Promises
+
+For more complicated load-testing pipelines, a `Promise`-enabled versions of `Meteor.call`, `Meteor.apply` and `Meteor.subscribe` are available as:
+ - `Meteor.call_GetPromise('name'[, args*])`
+ - `Meteor.apply_GetPromise('name'[, args])`
+ - `Meteor.subscribe_GetPromise('name'[, args*])`
+
+Simply omit the callback parameter and work with the `Promise` that is returned.
 
 ###Meteor.kill
 
