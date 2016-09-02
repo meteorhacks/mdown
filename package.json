@@ -19,7 +19,7 @@
     "mocha": "1.21.x"
   },
   "dependencies": {
-    "ddp": "0.10.x",
+    "ddp": "0.12.x",
     "underscore": "1.7.x",
     "coffee-script": "1.9.x"
   }
