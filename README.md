@@ -89,12 +89,27 @@ export METEOR_DOWN_KEY='YOUR_SUPER_SECRET_KEY'
 meteor
 ~~~
 
-Now, add that key to your MeteorDown script and tell which users you need to authenticated against the load test. This is how you can do it.
+Now, add that key to your MeteorDown script and tell which users you need to authenticated against the load test. This is how you can do it with direct ws/wss url :
 
 ~~~js
 meteorDown.run({
   concurrency: 10,
-  url: "http://localhost:3000",
+  url: "ws://localhost:3000/websocket",
+  key: 'YOUR_SUPER_SECRET_KEY',
+  auth: {userIds: ['JydhwL4cCRWvt3TiY', 'bg9MZZwFSf8EsFJM4']}
+})
+~~~
+
+Or with host, port, path, ssl ...
+
+~~~js
+meteorDown.run({
+  concurrency: 10,
+  host:'localhost',
+  port:'3000',
+  ssl:false,
+  useSockJs:false,
+  path:'path'
   key: 'YOUR_SUPER_SECRET_KEY',
   auth: {userIds: ['JydhwL4cCRWvt3TiY', 'bg9MZZwFSf8EsFJM4']}
 })
